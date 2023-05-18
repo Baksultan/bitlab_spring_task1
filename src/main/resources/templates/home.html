@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/bootstrap.css'}">
+    <script type="text/javascript" th:src="@{'/js/bootstrap.bundle.js'}"></script>
+</head>
+
+
+<body>
+
+    <div class="container" style="width: 1100px">
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary m-1" style="background-color: #3D7D91; height: 60px;">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="color: white" href="/">Student List</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" style="color: #9DBCC5" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/add-student" style="color: #9DBCC5;">Add Student</a>
+                        </li>
+
+                    </ul>
+                    <nav class="navbar bg-body-tertiary">
+                        <div class="container-fluid">
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-light" style="" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </nav>
+
+
+        <table class="table mt-4">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">SURNAME</th>
+                <th scope="col">EXAM</th>
+                <th scope="col">MARK</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr th:each="student : ${students}" th:style="${student.exam<50?'color: red':''}">
+                    <td><span th:text="${student.id}">ID</span></td>
+                    <td><span th:text="${student.name}">NAME</span></td>
+                    <td><span th:text="${student.surname}">SURNAME</span></td>
+                    <td><span th:text="${student.exam}">EXAM</span></td>
+                    <td><span th:text="${student.mark}">MARK</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>
